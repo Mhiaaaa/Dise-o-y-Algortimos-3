@@ -1,17 +1,4 @@
-public class Busquedas 
-{
-    // Búsqueda lineal
-    public static int busquedaLineal(int[] lista, int objetivo) {
-        for (int i = 0; i < lista.length; i++) {
-            if (lista[i] == objetivo) {
-                return i; // Devuelve la posición si lo encuentra
-            }
-
-        }
-        return -1; // No encontrado
-    }
-
-    // Búsqueda binaria (lista debe estar ordenada)
+public class BusquedaBinaria {
     public static int busquedaBinaria(int[] lista, int objetivo) {
         int izquierda = 0, derecha = lista.length - 1;
 
@@ -19,21 +6,27 @@ public class Busquedas
             int medio = (izquierda + derecha) / 2;
 
             if (lista[medio] == objetivo) {
-                return medio;
+                return medio; // Elemento encontrado
             } else if (lista[medio] < objetivo) {
-                izquierda = medio + 1;
+                izquierda = medio + 1; // Buscar en la mitad derecha
             } else {
-                derecha = medio - 1;
+                derecha = medio - 1; // Buscar en la mitad izquierda
             }
         }
-        return -1; // No encontrado
+
+        return -1; // Elemento no encontrado
     }
 
     public static void main(String[] args) {
-        int[] numeros = {1, 3, 5, 7, 9, 11, 13, 15};
-        int valor = 7;
+        int[] numeros = {2, 4, 6, 8, 10, 12, 14, 16};
+        int valor = 10;
 
-        System.out.println("Búsqueda lineal: " + busquedaLineal(numeros, valor));
-        System.out.println("Búsqueda binaria: " + busquedaBinaria(numeros, valor));
+        int resultado = busquedaBinaria(numeros, valor);
+
+        if (resultado != -1) {
+            System.out.println("Elemento encontrado en la posición: " + resultado);
+        } else {
+            System.out.println("Elemento no encontrado en la lista.");
+        }
     }
 }
