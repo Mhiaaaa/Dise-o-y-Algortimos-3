@@ -1,0 +1,52 @@
+public class Laberinto {
+
+    // 0 = camino libre, 1 = pared
+    private static int[][] laberinto = {
+        {0, 1, 0, 0, 0},
+        {0, 1, 0, 1, 0},
+        {0, 0, 0, 1, 0},
+        {1, 1, 0, 1, 0},
+        {0, 0, 0, 0, 0}
+    };
+
+    private static int n = laberinto.length; // tamaño del laberinto
+    private static boolean[][] visitado = new boolean[n][n];
+
+    public static void main(String[] args) {
+        if (resolverLaberinto(0, 0)) {
+            System.out.println("¡Salida encontrada!");
+        } else {
+            System.out.println("No hay salida.");
+        }
+    }
+
+    // Función recursiva con backtracking
+    public static boolean resolverLaberinto(int x, int y) {
+        // Caso base: llegar a la esquina inferior derecha (salida)
+        if (x == n - 1 && y == n - 1) {
+            System.out.println("Salida en (" + x + ", " + y + ")");
+            return true;
+        }
+
+        // Verificar si la posición es válida
+        if (esValido(x, y)) {
+            visitado[x][y] = true; // marcar como visitado
+
+            // Moverse en las 4 direcciones posibles
+            if (resolverLaberinto(x + 1, y)) return true; // abajo
+            if (resolverLaberinto(x, y + 1)) return true; // derecha
+            if (resolverLaberinto(x - 1, y)) return true; // arriba
+            if (resolverLaberinto(x, y - 1)) return true; // izquierda
+
+            // Backtracking: desmarcar si no hay salida
+            visitado[x][y] = false;
+        }
+        return false;
+    }
+
+    // Verifica si la posición es válida (dentro del laberinto y no visitada)
+    private static boolean esValido(int x, int y) {
+        return x >= 0 && x < n && y >= 0 && y < n &&
+               laberinto[x][y] == 0 && !visitado[x][y];
+    }
+}
