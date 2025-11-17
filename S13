@@ -1,5 +1,5 @@
 public class Laberinto {
-
+ddd
     // 0 = camino libre, 1 = pared
     private static int[][] laberinto = {
         {0, 1, 0, 0, 0},
