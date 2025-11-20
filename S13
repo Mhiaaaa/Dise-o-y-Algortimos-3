@@ -1,5 +1,4 @@
-public class Laberinto {
-ddd
+public class Laberinto {n
     // 0 = camino libre, 1 = pared
     private static int[][] laberinto = {
         {0, 1, 0, 0, 0},
