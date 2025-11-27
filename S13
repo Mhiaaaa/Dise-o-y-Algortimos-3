@@ -1,4 +1,4 @@
-caewc
+awkejfnwkejfaw
 public class Laberinto {n
     // 0 = camino libre, 1 = pared
     private static int[][] laberinto = {
