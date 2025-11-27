@@ -1,4 +1,5 @@
-public class BusquedaBinaria {
+public class BusquedaBinaria 
+efea{
     public static int busquedaBinaria(int[] lista, int objetivo) {
         int izquierda = 0, derecha = lista.length - 1;
 
